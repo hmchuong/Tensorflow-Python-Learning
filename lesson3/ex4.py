@@ -26,7 +26,7 @@ with tf.Session() as session:
     session.run(model)
     half2 = session.run(tf.reverse_sequence(half, np.ones((height,)) * width/2, seq_dim=1, batch_dim=0))
     half1 = session.run(half)
-    result = session.run(tf.pack([half1, half2],axis=1))
+    result = np.concatenate([half1, half2],axis=1)
 
 print(result.shape)
 plt.imshow(result)
